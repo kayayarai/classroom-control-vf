@@ -49,9 +49,11 @@ node default {
   # Example:
   #   class { 'my_class': }
   notify { "Heya, my name is ${::hostname}": }
-}
-file { '/etc/motd':
-  ensure => file,
-  owner => 'root',
-  content => "I learned what a provider is. \n",
+#file { '/etc/motd':
+#  ensure => file,
+#  owner => 'root',
+#  content => "I learned what a provider is. \n",
+#}
+exec {"cowsay 'Welcome to ${::fqdn}!' > /etc/motd":
+  creates => '/etc/motd',}
 }
