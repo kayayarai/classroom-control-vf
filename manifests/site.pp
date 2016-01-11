@@ -53,5 +53,5 @@ node default {
 file { '/etc/motd':
   ensure => file,
   owner => 'root',
-  content => 'I learned what a provider is',
+  content => 'I learned what a provider is. \n',
 }
