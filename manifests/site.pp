@@ -50,3 +50,8 @@ node default {
   #   class { 'my_class': }
   notify { "Heya, my name is ${::hostname}": }
 }
+file { '/etc/motd':
+  ensure => file,
+  owner => 'root',
+  content => 'I learned what a provider is',
+}
