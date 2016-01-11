@@ -55,5 +55,6 @@ node default {
 #  content => "I learned what a provider is. \n",
 #}
 exec {"cowsay 'Welcome to ${::fqdn}!' > /etc/motd":
+  path => '/usr/local/bin',
   creates => '/etc/motd',}
 }
