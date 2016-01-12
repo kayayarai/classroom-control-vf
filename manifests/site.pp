@@ -65,4 +65,5 @@ host { "testing":
   comment => 'for puppet fundamentals ex 7.3',
 }
 include users
+include skeleton
 }
