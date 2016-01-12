@@ -30,7 +30,7 @@ file {'/etc/nginx/nginx.conf':
   owner   => 'root',
   group   => 'root',
   mode    => '0644',
-  content => 'files:///modules/nginx/nginx.conf',
+  source => 'files:///modules/nginx/nginx.conf',
   require => Package['nginx'],
 
 }
@@ -39,7 +39,7 @@ file {'/var/www/index.html':
   owner   => 'root',
   group   => 'root',
   mode    => '0644',
-  content => 'files:///modules/nginx/index.html',
+  source => 'files:///modules/nginx/index.html',
   require => Package['nginx'],
 
 }
@@ -48,7 +48,7 @@ file {'/etc/nginx/conf.d/default.conf':
   owner   => 'root',
   group   => 'root',
   mode    => '0644',
-  content => 'files:///modules/nginx/default.conf',
+  source => 'files:///modules/nginx/default.conf',
   require => Package['nginx'],
 
 }
