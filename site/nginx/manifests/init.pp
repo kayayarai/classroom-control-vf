@@ -31,7 +31,7 @@ file {'/etc/nginx/nginx.conf':
   group   => 'root',
   mode    => '0644',
   content => 'files:///modules/nginx/nginx.conf',
-  requires => Package['nginx'],
+  require => Package['nginx'],
 
 }
 file {'/var/www/index.html':
@@ -40,7 +40,7 @@ file {'/var/www/index.html':
   group   => 'root',
   mode    => '0644',
   content => 'files:///modules/nginx/index.html',
-  requires => Package['nginx'],
+  require => Package['nginx'],
 
 }
 file {'/etc/nginx/conf.d/default.conf':
@@ -49,7 +49,7 @@ file {'/etc/nginx/conf.d/default.conf':
   group   => 'root',
   mode    => '0644',
   content => 'files:///modules/nginx/default.conf',
-  requires => Package['nginx'],
+  require => Package['nginx'],
 
 }
 
