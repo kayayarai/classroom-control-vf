@@ -4,7 +4,7 @@ package { 'nginx':
   ensure => 'present',
 }
 
-file {'/etc/nginx/':
+file {'/etc/nginx':
   ensure => 'directory',
   owner  => 'root',
   group  => 'root',
@@ -12,6 +12,13 @@ file {'/etc/nginx/':
 }
 
 file {'/var/www':
+  ensure => 'directory',
+  owner  => 'root',
+  group  => 'root',
+  mode   => '0755',
+}
+
+file {'/etc/nginx/conf.d':
   ensure => 'directory',
   owner  => 'root',
   group  => 'root',
@@ -33,6 +40,15 @@ file {'/var/www/index.html':
   group   => 'root',
   mode    => '0644',
   content => 'files:///modules/nginx/index.html',
+  requires => Package['nginx'],
+
+}
+file {'/etc/nginx/conf.d/default.conf':
+  ensure => file,
+  owner   => 'root',
+  group   => 'root',
+  mode    => '0644',
+  content => 'files:///modules/nginx/default.conf',
   requires => Package['nginx'],
 
 }
