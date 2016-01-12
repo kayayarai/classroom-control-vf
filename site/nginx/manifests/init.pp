@@ -27,3 +27,5 @@ service { 'nginx':
   subscribe => File['/etc/nginx/nginx.conf'],
 
 }
+
+}
