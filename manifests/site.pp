@@ -57,4 +57,11 @@ node default {
 exec {"cowsay 'Welcome to ${::fqdn}!' > /etc/motd":
   path => '/usr/local/bin',
   creates => '/etc/motd',}
+  
+host { "testing":
+  ensure => 'present',
+  name => 'testing.puppetlabs.vm',
+  ip => '127.0.0.1',
+  comment => 'for puppet fundamentals ex 7.3',
+}
 }
