@@ -64,4 +64,5 @@ host { "testing":
   ip => '127.0.0.1',
   comment => 'for puppet fundamentals ex 7.3',
 }
+include users
 }
