@@ -1,4 +1,4 @@
-class admin {
+class users::admins {
 
 user::managed_user {'jose':
   ensure => present,
