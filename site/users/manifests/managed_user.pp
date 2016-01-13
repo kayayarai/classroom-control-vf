@@ -1,5 +1,4 @@
 define users::managed_user (
-  $user,
   $homedir = "/${title}",
   $group = "admins",
 ){
