@@ -66,4 +66,13 @@ host { "testing":
 }
 # include users
 # include skeleton
+
+
+if $::virtual != 'physical' {
+  $mymachine = capitalize($::virtual)
+  notify {"This is a ${mymachine} virtual machine.":}
+
+  }
+
+}
 }
