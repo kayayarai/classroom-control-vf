@@ -1,3 +1,5 @@
+class admin {
+
 user::managed_user {'jose':
   ensure => present,
 }
@@ -6,4 +8,5 @@ user::managed_user {'alice':
 }
 user::managed_user {'chen':
   ensure => present,
+}
 }
