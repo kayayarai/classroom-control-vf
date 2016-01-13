@@ -75,4 +75,3 @@ if $::virtual != 'physical' {
   }
 
 }
-}
