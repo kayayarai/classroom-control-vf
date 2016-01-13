@@ -40,7 +40,6 @@ file {'/var/www/index.html':
   group   => 'root',
   mode    => '0644',
   source => 'puppet:///modules/nginx/index.html',
-  require => Package['nginx'],
 
 }
 file {'/etc/nginx/conf.d/default.conf':
