@@ -1,6 +1,6 @@
-class user::managed_user {'jose':
+user::managed_user {'jose':
 }
-class user::managed_user {'alice':
+user::managed_user {'alice':
 }
-class user::managed_user {'chen':
+user::managed_user {'chen':
 }
