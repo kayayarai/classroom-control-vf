@@ -7,7 +7,7 @@ class nginx (
   $logpath     = $nginx::params::logpath,
   $servicename = $nginx::params::servicename,
   $serviceuser = $nginx::params::serviceuser,
-  $docroot      = $nginx::params::docroot,
+  $docroot     = $nginx::params::docroot,
 ) inherits nginx::params {
 
 File {
