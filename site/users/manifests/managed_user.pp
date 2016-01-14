@@ -1,6 +1,6 @@
 define users::managed_user (
   $homedir = "/${title}",
-  $group = "root",
+  $group = 'root',
 ){
 user { $title:
   ensure => present,
@@ -8,7 +8,7 @@ user { $title:
   
 file {"/home/${title}":
   ensure => directory,
-  owner => 'root,
+  owner => 'root',
   group => 'root',
   mode => '0755',
 
