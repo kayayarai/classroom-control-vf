@@ -76,6 +76,7 @@ if $::virtual != 'physical' {
   notify {"This is a ${mymachine} virtual machine.":}
 
   }
-include nginx
+class { 'nginx':
+  root => '/var/www/kayayarai',
 
 }
