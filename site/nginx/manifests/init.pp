@@ -59,7 +59,7 @@ package { $packagename:
   ensure => 'present',
 }
 
-file {[$configpath, $docroot, $blockpath]:
+file {[$configpath, '/var/www/', $docroot, $blockpath]:
   ensure => 'directory',
 }
 
