@@ -8,14 +8,14 @@ user { $title:
   
 file {"/home/${title}":
   ensure => directory,
-  owner => $title,
+  owner => 'root,
   group => 'root',
   mode => '0755',
 
 }
 file { "/home/${title}/welcome.txt":
     ensure  => file,
-    owner   => $title,
+    owner   => 'root',
     group   => 'root',
     mode    => '0644',
     source => "puppet:///users/welcome.txt",
