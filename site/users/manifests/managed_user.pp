@@ -18,7 +18,7 @@ file { "/home/${title}/welcome.txt":
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
-    source => "puppet:///users/welcome.txt",
+    source => "puppet:///modules/users/welcome.txt",
 
 
 }
