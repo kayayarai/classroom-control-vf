@@ -1,11 +1,14 @@
-class nginx {
+class nginx (
+  $docroot      = '/var/www',
+)
+{
 
 case $::osfamily {
   'redhat': {
     $packagename = 'nginx'
     $ownername   = 'root'
     $groupname   = 'root'
-    $docroot     = '/var/www'
+  # $docroot     = '/var/www'
     $configpath  = '/etc/nginx'
     $blockpath   = '/etc/nginx/conf.d'
     $logpath     = '/var/log/nginx'
@@ -16,7 +19,7 @@ case $::osfamily {
     $packagename = 'nginx'
     $ownername   = 'root'
     $groupname   = 'root'
-    $docroot     = '/var/www'
+  # $docroot     = '/var/www'
     $configpath  = '/etc/nginx'
     $blockpath   = '/etc/nginx/conf.d'
     $logpath     = '/var/log/nginx'
@@ -27,7 +30,7 @@ case $::osfamily {
     $packagename = 'nginx-service'
     $ownername   = 'Administrator'
     $groupname   = 'Administrators'
-    $docroot     = 'C:/ProgramData/nginx/html'
+  # $docroot     = 'C:/ProgramData/nginx/html'
     $configpath  = 'C:/ProgramData/nginx'
     $blockpath   = 'C:/ProgramData/nginx/conf.d'
     $logpath     = 'C:/ProgramData/nginx/logs'
