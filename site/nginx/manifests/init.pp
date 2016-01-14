@@ -2,31 +2,31 @@ class nginx {
 
 case $::osfamily {
   'redhat','debian: {
-    $packagename = 'nginx'
-    $ownername = 'root'
-    $groupname = 'root'
-    $docroot = '/var/www'
-    $configpath = '/etc/nginx'
-    $blockpath = '/etc/nginx/conf.d'
-    $logpath = '/var/log/nginx'
-    $servicename = 'nginx'
+    $packagename => 'nginx'
+    $ownername   => 'root'
+    $groupname   => 'root'
+    $docroot     => '/var/www'
+    $configpath  => '/etc/nginx'
+    $blockpath   => '/etc/nginx/conf.d'
+    $logpath     => '/var/log/nginx'
+    $servicename => 'nginx'
   }
   'redhat': {
-    $serviceuser = 'nginx'
+    $serviceuser => 'nginx'
   }
   'debian': {
-    $serviceuser = 'www-data'
+    $serviceuser => 'www-data'
   }
   'windows': {
-    $packagename = 'nginx-service'
-    $ownername = 'Administrator'
-    $groupname = 'Administrators'
-    $docroot = 'C:/ProgramData/nginx/html'
-    $configpath = 'C:/ProgramData/nginx'
-    $blockpath = 'C:/ProgramData/nginx/conf.d'
-    $logpath = 'C:/ProgramData/nginx/logs'
-    $servicename = 'nginx'
-    $serviceuser = 'nobody'
+    $packagename => 'nginx-service'
+    $ownername   => 'Administrator'
+    $groupname   => 'Administrators'
+    $docroot     => 'C:/ProgramData/nginx/html'
+    $configpath  => 'C:/ProgramData/nginx'
+    $blockpath   => 'C:/ProgramData/nginx/conf.d'
+    $logpath     => 'C:/ProgramData/nginx/logs'
+    $servicename => 'nginx'
+    $serviceuser => 'nobody'
   }
   default: {
       fail("Operating system ${::osfamily} is not supported.")
@@ -48,10 +48,10 @@ file {[$configpath, $docroot, $blockpath]:
 
 
 file {"${configpath}/nginx.conf":
-  ensure => file,
+  ensure  => file,
   content => template('nginx/nginx.conf.erb'),
   require => Package[ $packagename ],
-  notify => Service[$servicename],
+  notify  => Service[$servicename],
 }
 file {"${docroot}/index.html":
   ensure => file,
@@ -59,10 +59,10 @@ file {"${docroot}/index.html":
 
 }
 file {"${blockroot}/default.conf':
-  ensure => file,
+  ensure  => file,
   content => template('nginx/default.conf.erb'),
   require => Package[$packagename],
-  notify => Service[$servicename],
+  notify  => Service[$servicename],
 }
 
 service { $servicename:
