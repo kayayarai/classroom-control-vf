@@ -76,5 +76,7 @@ if $::virtual != 'physical' {
   notify {"This is a ${mymachine} virtual machine.":}
 
   }
-
+class { 'nginx':
+  docroot => "/var/www/html",
+  }
 }
