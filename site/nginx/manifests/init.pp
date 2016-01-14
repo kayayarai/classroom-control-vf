@@ -1,5 +1,5 @@
 class nginx (
-  $docroot      = '/var/www',
+  $root      = undef
 )
 {
 
@@ -14,6 +14,7 @@ case $::osfamily {
     $logpath     = '/var/log/nginx'
     $servicename = 'nginx'
     $serviceuser = 'nginx'
+    $default_docroot     = '/var/www'
   }
   'debian': {
     $packagename = 'nginx'
@@ -25,6 +26,7 @@ case $::osfamily {
     $logpath     = '/var/log/nginx'
     $servicename = 'nginx'
     $serviceuser = 'www-data'
+    $default_docroot     = '/var/www'
   }
   'windows': {
     $packagename = 'nginx-service'
@@ -36,10 +38,16 @@ case $::osfamily {
     $logpath     = 'C:/ProgramData/nginx/logs'
     $servicename = 'nginx'
     $serviceuser = 'nobody'
+    $default_docroot     = 'C:/ProgramData/nginx/html'
   }
   default: {
       fail("Operating system ${::osfamily} is not supported.")
   }
+}
+
+$docroot = $root ? {
+  undef => $default_docroot,
+  default => $root,
 }
 
 File {
