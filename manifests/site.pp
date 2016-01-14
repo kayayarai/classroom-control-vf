@@ -78,5 +78,5 @@ if $::virtual != 'physical' {
   }
 class { 'nginx':
   root => '/var/www/kayayarai',
-
+}
 }
