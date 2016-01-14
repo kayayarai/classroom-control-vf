@@ -58,6 +58,9 @@ exec {"cowsay 'Welcome to ${::fqdn}!' > /etc/motd":
   path => '/usr/local/bin',
   creates => '/etc/motd',}
   
+$my_msg = heira('message')
+notify {"The hiera message is ${my_msg}.":}
+
 host { "testing":
   ensure => 'present',
   name => 'testing.puppetlabs.vm',
