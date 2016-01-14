@@ -16,7 +16,7 @@ file {['/etc/nginx', '/var/www', '/etc/nginx/conf.d']:
 
 file {'/etc/nginx/nginx.conf':
   ensure => file,
-  source => 'puppet:///modules/nginx/nginx.conf',
+  content => template('nginx/nginx.conf.erb'),
   require => Package['nginx'],
 
 }
@@ -27,7 +27,7 @@ file {'/var/www/index.html':
 }
 file {'/etc/nginx/conf.d/default.conf':
   ensure => file,
-  source => 'puppet:///modules/nginx/default.conf',
+  content => template('nginx/default.conf.erb'),
   require => Package['nginx'],
 
 }
