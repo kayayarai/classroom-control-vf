@@ -18,7 +18,7 @@ file { "/home/${title}/welcome.txt":
     owner   => $title,
     group   => 'admins',
     mode    => '0644',
-    source => 'users/welcome.txt',
+    source => "files:///users/welcome.txt",
 
 
 }
