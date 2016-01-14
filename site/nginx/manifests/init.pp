@@ -1,8 +1,14 @@
 class nginx (
-  
+  $packagename = $nginx::params::packagename,
+  $ownername   = $nginx::params::ownername,
+  $groupname   = $nginx::params::groupname,
+  $configpath  = $nginx::params::configpath,
+  $blockpath   = $nginx::params::blockpath,
+  $logpath     = $nginx::params::logpath,
+  $servicename = $nginx::params::servicename,
+  $serviceuser = $nginx::params::serviceuser,
   $docroot      = $nginx::params::docroot,
-)
-{
+) inherits nginx::params {
 
 File {
   owner => $ownername,
