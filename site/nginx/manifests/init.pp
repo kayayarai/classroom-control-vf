@@ -1,7 +1,7 @@
 class nginx {
 
 case $::osfamily {
-  'redhat','debian': {
+  'redhat': {
     $packagename = 'nginx'
     $ownername   = 'root'
     $groupname   = 'root'
@@ -10,11 +10,17 @@ case $::osfamily {
     $blockpath   = '/etc/nginx/conf.d'
     $logpath     = '/var/log/nginx'
     $servicename = 'nginx'
-  }
-  'redhat': {
     $serviceuser = 'nginx'
   }
   'debian': {
+    $packagename = 'nginx'
+    $ownername   = 'root'
+    $groupname   = 'root'
+    $docroot     = '/var/www'
+    $configpath  = '/etc/nginx'
+    $blockpath   = '/etc/nginx/conf.d'
+    $logpath     = '/var/log/nginx'
+    $servicename = 'nginx'
     $serviceuser = 'www-data'
   }
   'windows': {
@@ -35,7 +41,7 @@ case $::osfamily {
 
 File {
   owner => $ownername,
-  group => $ownername,
+  group => $groupname,
   mode  => '0644',
   }
 package { $packagename:
