@@ -1,41 +1,73 @@
 class nginx {
 
+case $::osfamily {
+  'redhat','debian: {
+    $packagename = 'nginx'
+    $ownername = 'root'
+    $groupname = 'root'
+    $docroot = '/var/www'
+    $configpath = '/etc/nginx'
+    $blockpath = '/etc/nginx/conf.d'
+    $logpath = '/var/log/nginx'
+    $servicename = 'nginx'
+  }
+  'redhat': {
+    $serviceuser = 'nginx'
+  }
+  'debian': {
+    $serviceuser = 'www-data'
+  }
+  'windows': {
+    $packagename = 'nginx-service'
+    $ownername = 'Administrator'
+    $groupname = 'Administrators'
+    $docroot = 'C:/ProgramData/nginx/html'
+    $configpath = 'C:/ProgramData/nginx'
+    $blockpath = 'C:/ProgramData/nginx/conf.d'
+    $logpath = 'C:/ProgramData/nginx/logs'
+    $servicename = 'nginx'
+    $serviceuser = 'nobody'
+  }
+  default: {
+      fail("Operating system ${::osfamily} is not supported.")
+  }
+}
+
 File {
-  owner => 'root',
-  group => 'root',
+  owner => $ownername,
+  group => $ownername',
   mode  => '0644',
   }
-package { 'nginx':
+package { $packagename:
   ensure => 'present',
 }
 
-file {['/etc/nginx', '/var/www', '/etc/nginx/conf.d']:
+file {[$configpath, $docroot, $blockpath]:
   ensure => 'directory',
 }
 
 
-file {'/etc/nginx/nginx.conf':
+file {"${configpath}/nginx.conf":
   ensure => file,
   content => template('nginx/nginx.conf.erb'),
-  require => Package['nginx'],
-
+  require => Package[ $packagename ],
+  notify => Service[$servicename],
 }
-file {'/var/www/index.html':
+file {"${docroot}/index.html":
   ensure => file,
   source => 'puppet:///modules/nginx/index.html',
 
 }
-file {'/etc/nginx/conf.d/default.conf':
+file {"${blockroot}/default.conf':
   ensure => file,
   content => template('nginx/default.conf.erb'),
-  require => Package['nginx'],
-
+  require => Package[$packagename],
+  notify => Service[$servicename],
 }
 
-service { 'nginx':
+service { $servicename:
   ensure => 'running',
   enable => true,
-  subscribe => [File['/etc/nginx/nginx.conf'],File['/etc/nginx/conf.d/default.conf']],
 }
 
 
