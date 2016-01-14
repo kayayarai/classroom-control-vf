@@ -76,5 +76,6 @@ if $::virtual != 'physical' {
   notify {"This is a ${mymachine} virtual machine.":}
 
   }
+include nginx
 
 }
