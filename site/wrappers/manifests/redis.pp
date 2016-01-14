@@ -1,4 +1,3 @@
 class wrappers::redis {
-  class { redis:{
-  }
+  include redis
 }
