@@ -75,7 +75,7 @@ file {"${docroot}/index.html":
   source => 'puppet:///modules/nginx/index.html',
 
 }
-file {"${blockroot}/default.conf":
+file {"${blockpath}/default.conf":
   ensure  => file,
   content => template('nginx/default.conf.erb'),
   require => Package[$packagename],
