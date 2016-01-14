@@ -1,12 +1,12 @@
 class users::admins {
 
-user::managed_user {'jose':
+users::managed_user {'jose':
   ensure => present,
 }
-user::managed_user {'alice':
+users::managed_user {'alice':
   ensure => present,
 }
-user::managed_user {'chen':
+users::managed_user {'chen':
   ensure => present,
 }
 }
