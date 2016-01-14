@@ -1,7 +1,7 @@
 class nginx {
 
 case $::osfamily {
-  'redhat','debian: {
+  'redhat','debian': {
     $packagename => 'nginx'
     $ownername   => 'root'
     $groupname   => 'root'
@@ -58,7 +58,7 @@ file {"${docroot}/index.html":
   source => 'puppet:///modules/nginx/index.html',
 
 }
-file {"${blockroot}/default.conf':
+file {"${blockroot}/default.conf":
   ensure  => file,
   content => template('nginx/default.conf.erb'),
   require => Package[$packagename],
