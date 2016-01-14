@@ -1,5 +1,6 @@
 class nginx (
-  $root      = undef
+  
+  $docroot      = $nginx::params::docroot,
 )
 {
 
